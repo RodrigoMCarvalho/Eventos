@@ -1,12 +1,13 @@
 package br.com.eventos.models;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Evento implements Serializable{
@@ -20,6 +21,8 @@ public class Evento implements Serializable{
 	private String local;
 	private String data;
 	private String horario;
+	@OneToMany  //Um evento para muitos convidados
+	private List<Convidado> convidados;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -39,9 +42,6 @@ public class Evento implements Serializable{
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	
-
-	
 	public String getData() {
 		return data;
 	}
