@@ -18,7 +18,7 @@ public class Evento implements Serializable{
 	private Long codigo;
 	private String nome;
 	private String local;
-	private Date data;
+	private String data;
 	private String horario;
 	
 	public Long getCodigo() {
@@ -40,10 +40,12 @@ public class Evento implements Serializable{
 		this.local = local;
 	}
 	
-	public Date getData() {
+
+	
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	public String getHorario() {

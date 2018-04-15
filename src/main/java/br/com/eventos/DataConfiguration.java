@@ -1,4 +1,4 @@
-package br.com.eventos.eventos;
+package br.com.eventos;
 
 import javax.sql.DataSource;
 
