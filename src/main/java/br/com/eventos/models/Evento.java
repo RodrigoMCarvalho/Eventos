@@ -3,11 +3,14 @@ package br.com.eventos.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Evento implements Serializable{
@@ -17,11 +20,17 @@ public class Evento implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long codigo;
+	@NotEmpty
 	private String nome;
+	@NotEmpty
 	private String local;
+	@NotEmpty
 	private String data;
+	@NotEmpty
 	private String horario;
-	@OneToMany  //Um evento para muitos convidados
+	
+	@OneToMany(cascade= CascadeType.REMOVE)  //Um evento para muitos convidados
+	@JoinColumn(name="convidado")
 	private List<Convidado> convidados;
 	
 	public Long getCodigo() {

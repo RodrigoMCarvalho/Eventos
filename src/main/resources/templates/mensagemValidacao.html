@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+<title>Eventos</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="alert alert-sucess alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+		<span th:text=${mensagem}></span>
+		
+	</div>
+</body>
+</html>

@@ -1,16 +1,23 @@
 package br.com.eventos.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Convidado {
 	
 	@Id
+	@NotEmpty
 	private String rg;
+	@NotEmpty
 	private String nome;
-	@ManyToOne //muitos convidados para um evento
+	
+	@ManyToOne(cascade = CascadeType.REMOVE) //muitos convidados para um evento
+	@JoinColumn(name="evento")
 	private Evento evento;
 	
 	public String getRg() {

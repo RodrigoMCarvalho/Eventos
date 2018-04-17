@@ -1,0 +1,25 @@
+.mensagem{
+	color: red;
+	bolder:
+}
+
+.detalhesEvento{
+	box-shadow: 0px 0px 5px grey;
+	padding-left: 10px;	
+}
+
+.formConvidado{
+	box-shadow: 0px 0px 5px grey;
+	padding-left: 10px;	
+	padding-bottom: 10px;	
+}
+
+.tabelaConvidado{
+	width: 40%;
+	margin-left: 200px;
+}
+
+.formEvento{
+	margin-top: 30px;
+}	
+	
