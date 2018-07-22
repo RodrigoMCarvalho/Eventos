@@ -48,7 +48,7 @@ public class EventoController {
 	
 	@RequestMapping("/eventos")
 	public ModelAndView listaEventos() {       //método para listar todos os eventos
-		ModelAndView mv = new ModelAndView("index"); //
+		ModelAndView mv = new ModelAndView("listaEventos"); //
 		Iterable<Evento> listaEventos = er.findAll();
 		mv.addObject("eventos",listaEventos);  //eventos é o ${eventos} do index
 		return mv;
