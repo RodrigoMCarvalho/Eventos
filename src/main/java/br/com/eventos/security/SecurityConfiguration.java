@@ -16,16 +16,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
+	private CustomLogoutSuccessHandler logoutSuccessHandler;
+	
+	@Autowired
 	private ImplementsUserDetailsService UserDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.csrf().disable().authorizeRequests()
-				.antMatchers(HttpMethod.GET, "/").permitAll()
+				.antMatchers(HttpMethod.GET, "/").permitAll() 
 				.anyRequest().authenticated()
 				.and().formLogin().permitAll()
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessHandler(logoutSuccessHandler); //para redirecionar após realizar logout no sistema
 	}
 
 	@Override
