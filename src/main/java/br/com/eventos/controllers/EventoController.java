@@ -31,7 +31,6 @@ public class EventoController {
 		return "evento/formEvento";
 	}
 	
-	
 	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.POST) //salvar os dados
 	public String form(@Valid Evento evento, BindingResult resultado, RedirectAttributes atributos) {
 		
@@ -39,7 +38,6 @@ public class EventoController {
 			atributos.addFlashAttribute("mensagem", "Erro! Por favor, verifique os campos.");
 			return "redirect:/cadastrarEvento";
 		}
-		
 		er.save(evento);
 		atributos.addFlashAttribute("mensagem", "Evento adicionado com sucesso!"); //"mensagem" se refere a <span th:text=${mensagem}></span>
 																					  //de mensagemValidacao.html
@@ -73,7 +71,6 @@ public class EventoController {
 			atributos.addFlashAttribute("mensagem", "Erro! Por favor, verifique os campos.");
 			return "redirect:/{codigo}";
 		}
-		
 		Evento evento = er.findByCodigo(codigo); //busca pelo código recebido como parâmetro
 		convidado.setEvento(evento); //associa o evento encontrado ao convidado
 		cr.save(convidado); //persiste o convidado no BD

@@ -26,6 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.csrf().disable().authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/").permitAll() 
+				.antMatchers(HttpMethod.GET, "/cadastrarEvento").hasRole("ADMIN") //ROLE_ADMIN
+				.antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("ADMIN") //ROLE_ADMIN
 				.anyRequest().authenticated()
 				.and().formLogin().permitAll()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -35,9 +37,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//auth.inMemoryAuthentication()
-		//.withUser("rodrigo").password("{noop}123").roles("ADMIN");
+		//.withUser("rodrigo").password("{noop}123").roles("ADMIN");  // autenticação em memória
 		auth.userDetailsService(UserDetailsService)
-		.passwordEncoder(new BCryptPasswordEncoder());
+		.passwordEncoder(new BCryptPasswordEncoder());   //autenticação via JPA com criptografia
 	}
 
 	@Override
