@@ -29,7 +29,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/cadastrarEvento").hasRole("ADMIN") //ROLE_ADMIN
 				.antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("ADMIN") //ROLE_ADMIN
 				.anyRequest().authenticated()
-				.and().formLogin().permitAll()
+				.antMatchers("/resources/**", "/webjars/**").permitAll()
+				.and().formLogin().loginPage("/login")
+				.usernameParameter("login")
+				.passwordParameter("senha").permitAll()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessHandler(logoutSuccessHandler); //para redirecionar após realizar logout no sistema
 	}
