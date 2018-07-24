@@ -5,6 +5,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <meta charset="UTF-8">
+  <title>Eventos</title>
 </head>
 
 <body>
@@ -19,9 +20,14 @@
     <center>
 
       <h5 class="indigo-text">Sistema de Eventos Online</h5>
+      
       <div class="section"></div>
 
       <div class="container">
+      
+      <div th:if="${param.error}">
+			<div class="alert alert-danger">Usuário e/ou inválidos!</div>
+	  </div>
       
         <div class="hoverable z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 		
