@@ -1,10 +1,10 @@
 package br.com.eventos.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -15,8 +15,10 @@ public class Convidado {
 	private String rg;
 	@NotEmpty
 	private String nome;
+	@Email
+	private String email;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE) //muitos convidados para um evento
+	@ManyToOne //muitos convidados para um evento
 	@JoinColumn(name="evento")
 	private Evento evento;
 	
@@ -37,6 +39,12 @@ public class Convidado {
 	}
 	public void setEvento(Evento evento) {
 		this.evento = evento;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

@@ -40,17 +40,29 @@
 	</div>
 	<div class="container formConvidado">
 		<form method="post">
+		
+		<div class="input-field col s12">
 			Nome: <input type="text" name="nome" placeholder="Nome do convidado"/>
+		</div>
+		<div class="row">
+		<div class="input-field col s6">
 			RG: <input type="text" name="rg" placeholder="00.00.000.000" class="validate"/>
+		</div>
+		<div class="input-field col s6">
+			Email: <input type="email" name="email" placeholder="Email" class="validate"/>
+		</div>
+		</div>
 			<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
 			<b class="mensagem"><th:block th:include="mensagemValidacao"></th:block></b>
 		</form>
+		</div>
 	</div>
 		<table class="container tabelaConvidado" >		
 			<thead>
 				<tr>
 					<th>Nome do Convidado</th>
 					<th>RG</th>
+					<th>Email</th>
 					<th>Deletar</th>
 				</tr>
 			</thead>
@@ -58,6 +70,7 @@
 				<tr th:each="convidado : ${convidados}">
 					<td><span th:text="${convidado.nome}"></span></td>
 					<td><span th:text="${convidado.rg}"></span></td>
+					<td><span th:text="${convidado.email}"></span></td>
 					<td><a th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}">
 					<i class="material-icons center">delete</i></a></td>
 				</tr>		

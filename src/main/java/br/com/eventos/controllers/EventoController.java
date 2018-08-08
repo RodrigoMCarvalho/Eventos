@@ -15,6 +15,7 @@ import br.com.eventos.models.Convidado;
 import br.com.eventos.models.Evento;
 import br.com.eventos.repository.ConvidadoRepository;
 import br.com.eventos.repository.EventoRepository;
+import br.com.eventos.service.EmailService;
 
 @Controller
 public class EventoController {
@@ -73,8 +74,13 @@ public class EventoController {
 		Evento evento = er.findByCodigo(codigo); //busca pelo código recebido como parâmetro
 		convidado.setEvento(evento); //associa o evento encontrado ao convidado
 		cr.save(convidado); //persiste o convidado no BD
+		
+		new EmailService().enviar(convidado.getNome(), convidado.getEmail(), convidado.getEvento());
+		
 		atributos.addFlashAttribute("mensagem", "Convidado adicionado com sucesso!"); //"mensagem" se refere a <span th:text=${mensagem}></span>
-		return "redirect:/{codigo}"; 												  //de mensagemValidacao.html
+		  //de mensagemValidacao.html
+		
+		return "redirect:/{codigo}"; 												  
 	}
 	
 	@GetMapping("/deletarEvento")
